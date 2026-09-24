@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MUSCULARCC | Patcharapong Pongpochai — Muscle Building Coach</title>
+  <meta name="description" content="โค้ชสร้างกล้ามเนื้อและวางแผนโภชนาการ โดย Patcharapong Pongpochai — โปรแกรมเฉพาะบุคคล วัดผลได้ทุกขั้นตอน" />
+  <meta property="og:title" content="MUSCULARCC | Patcharapong Pongpochai" />
+  <meta property="og:description" content="Muscle Building Coach · Thailand. 1:1 coaching." />
+  <meta property="og:image" content="coach-cover.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0908;
+      --surface: #161311;
+      --elevated: #1e1a16;
+      --fg: #ece6da;
+      --muted: #a89f92;
+      --faint: #6e675c;
+      --gold: #c9a24b;
+      --gold-bright: #e8c874;
+      --crimson: #c62b2b;
+      --crimson-deep: #8f1d1d;
+      --ink: #0a0908;
+      --line: color-mix(in oklab, var(--gold) 32%, transparent);
+      --line-strong: color-mix(in oklab, var(--gold) 55%, transparent);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Barlow, ui-sans-serif, system-ui, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; z-index: 80; pointer-events: none;
+      opacity: 0.045; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font-family: inherit; }
+    .skip {
+      position: absolute; left: -999px; top: 0;
+      background: var(--crimson); color: var(--fg); padding: 8px 16px; z-index: 100;
+    }
+    .skip:focus { left: 8px; top: 8px; }
+    .display { font-family: Anton, "Arial Narrow", Impact, sans-serif; letter-spacing: 0.01em; }
+    header.nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      transition: background .25s var(--ease), border-color .25s var(--ease);
+    }
+    header.nav.scrolled, header.nav.open {
+      background: color-mix(in oklab, var(--bg) 92%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    header.nav:not(.scrolled):not(.open) {
+      background: linear-gradient(to bottom, rgb(10 9 8 / .9), transparent);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 12px 16px;
+    }
+    @media (min-width: 640px) { .nav-inner { padding: 16px 6vw; } }
+    .logo { font-family: Anton, sans-serif; font-size: 1.15rem; color: var(--gold-bright); letter-spacing: .04em; flex-shrink: 0; }
+    .logo span { color: var(--crimson); }
+    .nav-links { display: none; gap: 32px; }
+    @media (min-width: 1024px) { .nav-links { display: flex; } }
+    .nav-links a {
+      position: relative; padding-bottom: 4px;
+      font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
+      background: var(--crimson); transition: width .2s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+    .socials { display: flex; gap: 6px; }
+    .socials a {
+      width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--line);
+      display: grid; place-items: center; color: var(--gold-bright);
+      transition: transform .2s var(--ease), border-color .2s, background .2s;
+    }
+    .socials a:hover { transform: translateY(-2px); border-color: var(--gold-bright); background: rgb(201 162 75 / .15); }
+    .socials svg { width: 14px; height: 14px; fill: currentColor; }
+    @media (min-width: 640px) {
+      .socials { gap: 10px; }
+      .socials a { width: 40px; height: 40px; }
+    }
+    .lang {
+      display: flex; height: 36px; border: 1px solid var(--line);
+      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em;
+    }
+    @media (min-width: 640px) { .lang { height: 44px; font-size: 12px; } }
+    .lang button {
+      border: 0; background: transparent; color: var(--muted); cursor: pointer;
+      min-width: 32px; padding: 0 8px; height: 100%;
+    }
+    .lang button.on { background: var(--gold); color: var(--ink); }
+    .burger {
+      width: 40px; height: 40px; border: 1px solid var(--line); background: transparent;
+      color: var(--fg); cursor: pointer; display: grid; place-items: center;
+    }
+    @media (min-width: 1024px) { .burger { display: none; } }
+    .mobile-menu {
+      display: none; border-top: 1px solid var(--line); background: var(--bg);
+      padding: 32px 6vw;
+    }
+    header.nav.open .mobile-menu { display: block; }
+    .mobile-menu a {
+      display: block; font-family: Anton, sans-serif; font-size: 2rem;
+      letter-spacing: .04em; padding: 8px 0;
+    }
+    .hero { position: relative; min-height: 100dvh; overflow: hidden; background: var(--bg); }
+    .hero img.cover {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      object-position: center 22%; filter: contrast(1.05) saturate(.92);
+    }
+    @media (min-width: 768px) { .hero img.cover { object-position: 82% 10%; } }
+    .hero-wash, .hero-vignette { position: absolute; inset: 0; }
+    .hero-wash {
+      background: linear-gradient(to top, var(--bg) 0%, rgb(6 5 4 / .92) 36%, rgb(6 5 4 / .28) 64%, rgb(6 5 4 / .06) 100%);
+    }
+    @media (min-width: 768px) {
+      .hero-wash {
+        background: linear-gradient(to right, rgb(6 5 4 / .98) 0%, rgb(6 5 4 / .88) 28%, rgb(6 5 4 / .38) 48%, rgb(6 5 4 / .08) 68%, transparent 100%);
+      }
+    }
+    .hero-vignette {
+      pointer-events: none;
+      background: radial-gradient(ellipse at 50% 30%, rgb(201 162 75 / .08), transparent 42%),
+                  radial-gradient(ellipse at center, transparent 58%, rgb(0 0 0 / .4) 100%);
+    }
+    .hero-copy {
+      position: relative; z-index: 2; min-height: 100dvh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 7rem 6vw 4rem;
+    }
+    @media (min-width: 768px) { .hero-copy { justify-content: center; padding-bottom: 6rem; } }
+    .eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .28em; color: var(--crimson); margin-bottom: 20px;
+    }
+    .eyebrow i { display: block; width: 36px; height: 2px; background: var(--crimson); }
+    h1 {
+      font-family: Anton, sans-serif;
+      font-size: clamp(2.85rem, 8.4vw, 6.75rem);
+      line-height: .92; font-weight: 400;
+    }
+    h1 .gold { color: var(--gold-bright); }
+    .lead { margin-top: 1.75rem; max-width: 32rem; font-size: clamp(1.05rem, .95rem + .4vw, 1.2rem); line-height: 1.6; color: var(--muted); }
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2.5rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 12px 28px; border: 2px solid transparent;
+      font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em;
+      cursor: pointer; transition: background .25s var(--ease), color .25s, transform .2s, box-shadow .25s;
+    }
+    .btn:active { transform: scale(.96); }
+    .btn-primary { background: var(--crimson); color: var(--fg); box-shadow: 0 12px 28px -12px rgb(198 43 43 / .75); }
+    .btn-primary:hover { background: var(--crimson-deep); }
+    .btn-outline { border-color: var(--gold); color: var(--gold-bright); background: transparent; }
+    .btn-outline:hover { background: var(--gold); color: var(--ink); }
+    .btn-ghost { background: transparent; color: var(--fg); border-color: transparent; }
+    .btn-ghost:hover { color: var(--gold-bright); }
+    .stats {
+      display: flex; max-width: 36rem; margin-top: 4rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .stats > div { flex: 1; padding-right: 1.5rem; }
+    .stats > div + div { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+    .stats b { display: block; font-family: Anton, sans-serif; font-size: 1.875rem; color: var(--gold-bright); font-weight: 400; }
+    .stats span { display: block; margin-top: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+    .gold-line { height: 1px; background: linear-gradient(90deg, transparent, var(--line-strong), transparent); position: relative; }
+    .gold-line::before {
+      content: ""; position: absolute; left: 50%; top: 50%; width: 7px; height: 7px;
+      transform: translate(-50%,-50%) rotate(45deg); background: var(--gold-bright);
+      box-shadow: 0 0 0 10px var(--bg);
+    }
+    section.block { padding: 7rem 6vw; }
+    .wrap { max-width: 72rem; margin: 0 auto; }
+    h2 { font-family: Anton, sans-serif; font-size: clamp(2rem, 4.6vw, 3.5rem); font-weight: 400; }
+    .surface { background: var(--surface); }
+    .about-grid { display: grid; gap: 3rem; }
+    @media (min-width: 768px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+    figure.portrait {
+      position: relative; aspect-ratio: 4/5; overflow: hidden;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 0 1px color-mix(in oklab, var(--gold) 28%, transparent), 0 22px 44px -16px rgb(0 0 0 / .72);
+    }
+    figure.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; filter: contrast(1.1) saturate(.9); }
+    figure.portrait .fade { position: absolute; inset: 0; background: linear-gradient(to top, rgb(10 9 8 / .82) 0%, transparent 42%); pointer-events: none; }
+    figure.portrait .frame { position: absolute; inset: 14px; border: 1px solid rgb(236 230 218 / .15); pointer-events: none; }
+    figure.portrait figcaption {
+      position: absolute; left: 20px; right: 20px; bottom: 20px;
+      font-size: 14px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-bright);
+    }
+    .about-lead { margin-bottom: 1.25rem; font-size: clamp(1.05rem, .95rem + .4vw, 1.2rem); line-height: 1.6; color: var(--muted); }
+    .about-lead strong { color: var(--fg); font-weight: 600; }
+    .about-story { margin-bottom: 2rem; line-height: 1.7; color: var(--muted); }
+    .creds li {
+      display: flex; align-items: center; gap: 16px;
+      border-bottom: 1px solid var(--line); padding: 16px 0; list-style: none;
+    }
+    .creds b {
+      width: 32px; height: 32px; border-radius: 999px; background: var(--gold-bright);
+      color: var(--ink); display: grid; place-items: center;
+      font-family: Anton, sans-serif; font-size: 12px; font-weight: 400; flex-shrink: 0;
+    }
+    .steps { display: grid; gap: 2rem; }
+    @media (min-width: 640px) { .steps { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+    .steps li { list-style: none; border-left: 2px solid var(--gold); padding-left: 20px; }
+    .steps .n { font-family: Anton, sans-serif; font-size: 2.25rem; color: var(--crimson); line-height: 1; }
+    .steps h3 { margin-top: 12px; font-size: 1.25rem; }
+    .steps p { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--muted); }
+    .goal-grid { display: grid; gap: 16px; }
+    @media (min-width: 640px) { .goal-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .goal-grid { grid-template-columns: repeat(4, 1fr); } }
+    .goal-card {
+      min-height: 96px; text-align: left; padding: 24px; cursor: pointer;
+      border: 1px solid var(--line); background: linear-gradient(to bottom right, var(--elevated), var(--surface));
+      color: var(--fg); font-size: 1.125rem; line-height: 1.4; position: relative; overflow: hidden;
+      transition: transform .25s var(--ease), border-color .25s, color .25s;
+    }
+    .goal-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--crimson); transform: scaleY(0); transform-origin: bottom; transition: transform .25s;
+    }
+    .goal-card:hover, .goal-card.on { transform: translateY(-4px); border-color: var(--gold); color: var(--gold-bright); }
+    .goal-card:hover::before, .goal-card.on::before { transform: scaleY(1); }
+    .offer-grid { display: grid; gap: 1px; background: var(--line); }
+    @media (min-width: 640px) { .offer-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .offer-grid article { background: var(--bg); padding: 32px; }
+    .offer-grid h3 { font-size: 1.25rem; margin-bottom: 12px; }
+    .offer-grid p { line-height: 1.7; color: var(--muted); }
+    .note { margin-top: 2rem; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+    .apply { text-align: center; position: relative; overflow: hidden; }
+    .apply::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgb(198 43 43 / .18), transparent 70%);
+    }
+    .apply-inner { position: relative; max-width: 42rem; margin: 0 auto; }
+    form { margin-top: 3rem; text-align: left; }
+    label, legend {
+      display: block; margin-bottom: 8px;
+      font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .16em; color: var(--muted);
+    }
+    input[type=text], textarea {
+      width: 100%; min-height: 48px; border: 1px solid var(--line); background: var(--elevated);
+      color: var(--fg); padding: 12px 16px; font-size: 16px; margin-bottom: 20px;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus { outline: 1px solid var(--gold); border-color: var(--gold); }
+    .goal-picks { display: grid; gap: 8px; margin-bottom: 20px; }
+    @media (min-width: 640px) { .goal-picks { grid-template-columns: 1fr 1fr; } }
+    .goal-picks label {
+      min-height: 48px; margin: 0; display: flex; align-items: center;
+      border: 1px solid var(--line); padding: 12px 16px; font-size: 14px; text-transform: none;
+      letter-spacing: 0; color: var(--muted); cursor: pointer; font-weight: 500;
+    }
+    .goal-picks label.on { border-color: var(--gold); background: var(--elevated); color: var(--gold-bright); }
+    .goal-picks input { position: absolute; opacity: 0; pointer-events: none; }
+    .err { color: var(--crimson); font-size: 14px; margin-bottom: 12px; display: none; }
+    .form-actions { display: flex; justify-content: center; padding-top: 8px; }
+    .success { display: none; margin-top: 3rem; border: 1px solid var(--line); background: var(--surface); padding: 40px 24px; text-align: left; }
+    .success h3 { font-family: Anton, sans-serif; font-size: 1.875rem; font-weight: 400; }
+    .success p { margin-top: 12px; color: var(--muted); }
+    .success .meta { font-size: 14px; color: var(--faint); }
+    .success .btns { margin-top: 2rem; }
+    footer { border-top: 1px solid var(--line); padding: 40px 6vw; text-align: center; }
+    footer .socials { justify-content: center; margin-bottom: 24px; }
+    footer p { font-size: 14px; letter-spacing: .04em; color: var(--faint); }
+    .head-space { max-width: 36rem; margin-bottom: 3.5rem; }
+    .head-space h2 { margin-top: 4px; }
+    .head-space .lead { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#top">Skip to content</a>
+
+  <header class="nav" id="site-nav">
+    <div class="nav-inner">
+      <a class="logo" href="#top">MUSCULAR<span>CC</span></a>
+      <nav class="nav-links">
+        <a href="#about" data-i="navAbout">เกี่ยวกับ</a>
+        <a href="#method" data-i="navMethod">วิธีโค้ช</a>
+        <a href="#goals" data-i="navGoals">เป้าหมาย</a>
+        <a href="#apply" data-i="navApply">สมัครโค้ช</a>
+      </nav>
+      <div class="nav-right">
+        <div class="socials">
+          <a href="https://www.facebook.com/patcharapong.cc" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.25-1.5 1.55-1.5H16.7V3.4c-.28-.04-1.24-.12-2.36-.12-2.33 0-3.93 1.42-3.93 4.03V9.8H7.9V13h2.5v8h3.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/patcharapong_cc" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 011.77 1.15 4.9 4.9 0 011.15 1.77c.16.46.35 1.26.4 2.43.06 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.46.16-1.26.35-2.43.4-1.25.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.24-1.97.4-2.43A4.9 4.9 0 013.82 3a4.9 4.9 0 011.77-1.15c.46-.16 1.26-.35 2.43-.4C9.27 1.4 9.4 1.4 12 2.2zm0 1.8c-2.36 0-2.7.02-3.68.06-.9.04-1.5.19-1.9.34a3.1 3.1 0 00-1.13.73 3.1 3.1 0 00-.73 1.13c-.15.4-.3 1-.34 1.9C4.18 9.3 4.16 9.64 4.16 12s.02 2.7.06 3.68c.04.9.19 1.5.34 1.9.15.42.36.78.73 1.13.35.37.71.58 1.13.73.4.15 1 .3 1.9.34.98.04 1.32.06 3.68.06s2.7-.02 3.68-.06c.9-.04 1.5-.19 1.9-.34.42-.15.78-.36 1.13-.73.37-.35.58-.71.73-1.13.15-.4.3-1 .34-1.9.04-.98.06-1.32.06-3.68s-.02-2.7-.06-3.68c-.04-.9-.19-1.5-.34-1.9a3.1 3.1 0 00-.73-1.13 3.1 3.1 0 00-1.13-.73c-.4-.15-1-.3-1.9-.34C14.7 4.02 14.36 4 12 4zm0 3.6a4.4 4.4 0 110 8.8 4.4 4.4 0 010-8.8zm0 1.8a2.6 2.6 0 100 5.2 2.6 2.6 0 000-5.2zm4.6-2a1 1 0 110 2 1 1 0 010-2z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/patcharapong-pongpochai-coaching" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.64h.05c.53-.98 1.83-2.02 3.77-2.02 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.9c0-1.4-.03-3.2-1.98-3.2-1.98 0-2.28 1.5-2.28 3.1V21h-4V9z"/></svg>
+          </a>
+        </div>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" id="btn-th" class="on" aria-pressed="true">TH</button>
+          <button type="button" id="btn-en" aria-pressed="false">EN</button>
+        </div>
+        <button class="burger" type="button" id="burger" aria-label="เปิดเมนู" aria-expanded="false">☰</button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about" data-i="navAbout">เกี่ยวกับ</a>
+      <a href="#method" data-i="navMethod">วิธีโค้ช</a>
+      <a href="#goals" data-i="navGoals">เป้าหมาย</a>
+      <a href="#apply" data-i="navApply">สมัครโค้ช</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <img class="cover" src="coach-cover.jpg" alt="Patcharapong Pongpochai — Muscle Building Coach" />
+      <div class="hero-wash"></div>
+      <div class="hero-vignette"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><i></i><span data-i="eyebrow">Muscle Building Coach · Thailand</span></p>
+        <h1>TRANSFORM<br />YOUR <span class="gold">PHYSIQUE.</span></h1>
+        <p class="lead" data-i="heroSub">โค้ชสร้างกล้ามเนื้อและวางแผนโภชนาการ โดย Patcharapong Pongpochai — ออกแบบโปรแกรมเฉพาะบุคคล เน้นผลลัพธ์จริง วัดผลได้ทุกขั้นตอน</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#apply" data-i="ctaApply">สมัครโค้ช 1:1</a>
+          <a class="btn btn-outline" href="#method" data-i="ctaMethod">ดูวิธีทำงาน</a>
+        </div>
+        <div class="stats">
+          <div><b>370K+</b><span data-i="statFollowers">ผู้ติดตาม</span></div>
+          <div><b>10+</b><span data-i="statYears">ปีประสบการณ์</span></div>
+          <div><b>1:1</b><span data-i="statCoach">โค้ชส่วนตัว</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <section class="block surface" id="about">
+      <div class="wrap about-grid">
+        <figure class="portrait">
+          <img src="coach.jpg" alt="Patcharapong Pongpochai" />
+          <div class="fade"></div>
+          <div class="frame"></div>
+          <figcaption data-i="photoTag">PATCHARAPONG PONGPOCHAI</figcaption>
+        </figure>
+        <div>
+          <p class="eyebrow"><i></i><span data-i="aboutEyebrow">เกี่ยวกับโค้ช</span></p>
+          <p class="about-lead"><strong>Patcharapong Pongpochai (MUSCULARCC)</strong> <span data-i="aboutLead">โค้ชสร้างกล้ามเนื้อและวางแผนโภชนาการที่ผ่านการฝึกฝนร่างกายของตัวเองมาอย่างจริงจังกว่า 10 ปี สั่งสมประสบการณ์ตรงทั้งการแข่งขันฟิตเนสและการโค้ชผู้ฝึกจริงหลายร้อยคน จนกลายเป็นระบบที่ใช้ได้ผลจริง ไม่ใช่ทฤษฎีลอยๆ</span></p>
+          <p class="about-story" data-i="aboutStory">เคยเป็นสายเที่ยว สายกิน จนอายุ 37 ถึงรู้ตัว — แล้วเลือกทางแบกเหล็กอย่างจริงจัง เชื่อว่าการสร้างกล้ามเนื้อที่ยั่งยืนต้องมาจากพื้นฐานที่ถูกต้อง การฝึกที่เป็นระบบ วัดผลได้ โภชนาการที่แม่นยำตามสรีระแต่ละคน และวินัยที่ทำได้จริงในชีวิตประจำวัน ไม่ใช่สูตรสำเร็จตายตัวที่ใช้ได้กับทุกคน</p>
+          <ul class="creds">
+            <li><b>01</b><span data-i="cred1">ประสบการณ์ฝึกและโค้ชมากกว่า 10 ปี</span></li>
+            <li><b>02</b><span data-i="cred2">วางแผนโปรแกรมฝึกและโภชนาการเฉพาะบุคคล</span></li>
+            <li><b>03</b><span data-i="cred3">ดูแลผู้ฝึกจริงมาแล้วหลายร้อยเคส</span></li>
+            <li><b>04</b><span data-i="cred4">ติดตามผลและปรับแผนอย่างต่อเนื่องทุกขั้นตอน</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <section class="block" id="method">
+      <div class="wrap">
+        <header class="head-space">
+          <p class="eyebrow"><i></i><span data-i="methodEyebrow">ระบบการโค้ช</span></p>
+          <h2 data-i="methodTitle">ไม่ใช่แพ็กเกจสำเร็จรูป</h2>
+          <p class="lead" data-i="methodSub">ทุกคนเริ่มจากร่างกาย ไลฟ์สไตล์ และเป้าหมายที่ไม่เหมือนกัน แผนจึงต้องถูกออกแบบใหม่ทุกครั้ง</p>
+        </header>
+        <ol class="steps">
+          <li><div class="n">01</div><h3 data-i="step1t">ประเมิน</h3><p data-i="step1d">วัดสรีระ ไลฟ์สไตล์ ตารางชีวิต และจุดที่ติดอยู่ตอนนี้</p></li>
+          <li><div class="n">02</div><h3 data-i="step2t">ออกแบบ</h3><p data-i="step2d">โปรแกรมฝึก + โภชนาการเฉพาะตัว ตามอุปกรณ์และอาหารที่กินได้จริง</p></li>
+          <li><div class="n">03</div><h3 data-i="step3t">โค้ช 1:1</h3><p data-i="step3d">เช็คอินทุกสัปดาห์ แก้ฟอร์ม ปรับน้ำหนัก ตอบตรงจุด</p></li>
+          <li><div class="n">04</div><h3 data-i="step4t">วัดผล</h3><p data-i="step4d">ชั่ง วัด ถ่ายรูป ปรับแผนต่อเนื่อง ไม่ปล่อยให้เดินผิดทาง</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <section class="block surface" id="goals">
+      <div class="wrap">
+        <header class="head-space">
+          <p class="eyebrow"><i></i><span data-i="goalsEyebrow">เป้าหมายของคุณ</span></p>
+          <h2 data-i="goalsTitle">เลือกเป้าหมายที่ใช่สำหรับคุณ</h2>
+          <p class="lead" data-i="goalsSub">ไม่ว่าจะเริ่มต้นหรือฝึกมานาน โปรแกรมจะถูกออกแบบให้ตรงกับเป้าหมายที่คุณเลือก</p>
+        </header>
+        <div class="goal-grid" id="goal-cards"></div>
+      </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <section class="block">
+      <div class="wrap">
+        <header class="head-space">
+          <p class="eyebrow"><i></i><span data-i="offerEyebrow">1:1 Coaching</span></p>
+          <h2 data-i="offerTitle">สิ่งที่คุณได้เมื่อเข้าโค้ช</h2>
+        </header>
+        <div class="offer-grid">
+          <article><h3 data-i="offer1t">โปรแกรมฝึกตามชีวิตจริง</h3><p data-i="offer1d">ออกแบบตามอุปกรณ์ที่มี เวลาที่มี และระดับที่คุณยืนอยู่ตอนนี้</p></article>
+          <article><h3 data-i="offer2t">โภชนาการที่กินได้จริง</h3><p data-i="offer2d">ไม่ใช่เมนูในฝัน — เป็นแผนที่เข้ากับครัวไทยและตารางประจำวัน</p></article>
+          <article><h3 data-i="offer3t">ติดตามรายสัปดาห์</h3><p data-i="offer3d">เช็คอิน ปรับแผน แก้จุดที่ชะงัก ก่อนนิสัยเก่าจะดึงกลับ</p></article>
+        </div>
+        <p class="note" data-i="offerNote">พูดคุยเป้าหมายก่อนเริ่ม ไม่มีแพ็กเกจสำเร็จรูปให้กดซื้อ</p>
+      </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <section class="block apply" id="apply">
+      <div class="apply-inner">
+        <p class="eyebrow" style="justify-content:center"><i></i><span data-i="applyEyebrow">พร้อมเริ่มต้นหรือยัง</span></p>
+        <h2><span data-i="applyTitleA">เริ่มเปลี่ยนร่างกายวันนี้</span><br /><span class="gold" data-i="applyTitleAccent">กับ MUSCULARCC</span></h2>
+        <p class="lead" style="margin-left:auto;margin-right:auto" data-i="applySub">กรอกสั้นๆ แล้วทักต่อทาง Facebook หรือ Instagram — เราจะคุยเป้าหมายก่อนออกแบบแผน</p>
+
+        <div class="success" id="success">
+          <h3 data-i="successTitle">ใบสมัครถูกบันทึกแล้ว</h3>
+          <p data-i="successBody">ขั้นตอนถัดไปคือทักหาโค้ชตรงๆ เลือกช่องทางที่คุยสะดวก</p>
+          <p class="meta" id="success-meta"></p>
+          <div class="btns">
+            <a class="btn btn-primary" href="https://www.instagram.com/patcharapong_cc" target="_blank" rel="noopener noreferrer" data-i="msgIg">ทัก Instagram</a>
+            <a class="btn btn-outline" href="https://www.facebook.com/patcharapong.cc" target="_blank" rel="noopener noreferrer" data-i="msgFb">ทัก Facebook</a>
+            <button class="btn btn-ghost" type="button" id="again" data-i="another">กรอกใหม่อีกครั้ง</button>
+          </div>
+        </div>
+
+        <form id="apply-form">
+          <label for="name" data-i="nameLabel">ชื่อ</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+          <label for="contact" data-i="contactLabel">ช่องทางติดต่อ</label>
+          <input id="contact" name="contact" type="text" required />
+          <fieldset>
+            <legend data-i="goalLabel">เป้าหมาย</legend>
+            <div class="goal-picks" id="goal-picks"></div>
+          </fieldset>
+          <label for="message" data-i="messageLabel">เล่าสั้นๆ</label>
+          <textarea id="message" name="message" required></textarea>
+          <p class="err" id="form-error" data-i="formError">กรอกชื่อ ช่องทางติดต่อ และข้อความอย่างน้อย 10 ตัวอักษร</p>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit" data-i="submit">บันทึกแล้วไปทักโค้ช</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="socials">
+      <a href="https://www.facebook.com/patcharapong.cc" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.25-1.5 1.55-1.5H16.7V3.4c-.28-.04-1.24-.12-2.36-.12-2.33 0-3.93 1.42-3.93 4.03V9.8H7.9V13h2.5v8h3.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/patcharapong_cc" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 011.77 1.15 4.9 4.9 0 011.15 1.77c.16.46.35 1.26.4 2.43.06 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.46.16-1.26.35-2.43.4-1.25.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.24-1.97.4-2.43A4.9 4.9 0 013.82 3a4.9 4.9 0 011.77-1.15c.46-.16 1.26-.35 2.43-.4C9.27 1.4 9.4 1.4 12 2.2zm0 1.8c-2.36 0-2.7.02-3.68.06-.9.04-1.5.19-1.9.34a3.1 3.1 0 00-1.13.73 3.1 3.1 0 00-.73 1.13c-.15.4-.3 1-.34 1.9C4.18 9.3 4.16 9.64 4.16 12s.02 2.7.06 3.68c.04.9.19 1.5.34 1.9.15.42.36.78.73 1.13.35.37.71.58 1.13.73.4.15 1 .3 1.9.34.98.04 1.32.06 3.68.06s2.7-.02 3.68-.06c.9-.04 1.5-.19 1.9-.34.42-.15.78-.36 1.13-.73.37-.35.58-.71.73-1.13.15-.4.3-1 .34-1.9.04-.98.06-1.32.06-3.68s-.02-2.7-.06-3.68c-.04-.9-.19-1.5-.34-1.9a3.1 3.1 0 00-.73-1.13 3.1 3.1 0 00-1.13-.73c-.4-.15-1-.3-1.9-.34C14.7 4.02 14.36 4 12 4zm0 3.6a4.4 4.4 0 110 8.8 4.4 4.4 0 010-8.8zm0 1.8a2.6 2.6 0 100 5.2 2.6 2.6 0 000-5.2zm4.6-2a1 1 0 110 2 1 1 0 010-2z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/patcharapong-pongpochai-coaching" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.64h.05c.53-.98 1.83-2.02 3.77-2.02 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.9c0-1.4-.03-3.2-1.98-3.2-1.98 0-2.28 1.5-2.28 3.1V21h-4V9z"/></svg>
+      </a>
+    </div>
+    <p data-i="footer">© MUSCULARCC — Patcharapong Pongpochai. Muscle Building Coach.</p>
+  </footer>
+
+  <script>
+    const GOALS = [
+      { id: "cut", th: "ลดไขมัน กระชับสัดส่วน", en: "Cut fat, tighten the physique" },
+      { id: "mass", th: "สร้างกล้ามเนื้อ เพิ่มมวลกาย", en: "Build muscle, add mass" },
+      { id: "stage", th: "ฟิตหุ่นนักกีฬา / เตรียมประกวด", en: "Athlete fit / stage prep" },
+      { id: "start", th: "ฟื้นฟูร่างกาย เริ่มต้นออกกำลังกาย", en: "Rebuild and start training" },
+    ];
+    const COPY = {
+      th: {
+        navAbout: "เกี่ยวกับ", navMethod: "วิธีโค้ช", navGoals: "เป้าหมาย", navApply: "สมัครโค้ช",
+        eyebrow: "Muscle Building Coach · Thailand",
+        heroSub: "โค้ชสร้างกล้ามเนื้อและวางแผนโภชนาการ โดย Patcharapong Pongpochai — ออกแบบโปรแกรมเฉพาะบุคคล เน้นผลลัพธ์จริง วัดผลได้ทุกขั้นตอน",
+        ctaApply: "สมัครโค้ช 1:1", ctaMethod: "ดูวิธีทำงาน",
+        statFollowers: "ผู้ติดตาม", statYears: "ปีประสบการณ์", statCoach: "โค้ชส่วนตัว",
+        aboutEyebrow: "เกี่ยวกับโค้ช",
+        aboutLead: "โค้ชสร้างกล้ามเนื้อและวางแผนโภชนาการที่ผ่านการฝึกฝนร่างกายของตัวเองมาอย่างจริงจังกว่า 10 ปี สั่งสมประสบการณ์ตรงทั้งการแข่งขันฟิตเนสและการโค้ชผู้ฝึกจริงหลายร้อยคน จนกลายเป็นระบบที่ใช้ได้ผลจริง ไม่ใช่ทฤษฎีลอยๆ",
+        aboutStory: "เคยเป็นสายเที่ยว สายกิน จนอายุ 37 ถึงรู้ตัว — แล้วเลือกทางแบกเหล็กอย่างจริงจัง เชื่อว่าการสร้างกล้ามเนื้อที่ยั่งยืนต้องมาจากพื้นฐานที่ถูกต้อง การฝึกที่เป็นระบบ วัดผลได้ โภชนาการที่แม่นยำตามสรีระแต่ละคน และวินัยที่ทำได้จริงในชีวิตประจำวัน ไม่ใช่สูตรสำเร็จตายตัวที่ใช้ได้กับทุกคน",
+        cred1: "ประสบการณ์ฝึกและโค้ชมากกว่า 10 ปี", cred2: "วางแผนโปรแกรมฝึกและโภชนาการเฉพาะบุคคล",
+        cred3: "ดูแลผู้ฝึกจริงมาแล้วหลายร้อยเคส", cred4: "ติดตามผลและปรับแผนอย่างต่อเนื่องทุกขั้นตอน",
+        methodEyebrow: "ระบบการโค้ช", methodTitle: "ไม่ใช่แพ็กเกจสำเร็จรูป",
+        methodSub: "ทุกคนเริ่มจากร่างกาย ไลฟ์สไตล์ และเป้าหมายที่ไม่เหมือนกัน แผนจึงต้องถูกออกแบบใหม่ทุกครั้ง",
+        step1t: "ประเมิน", step1d: "วัดสรีระ ไลฟ์สไตล์ ตารางชีวิต และจุดที่ติดอยู่ตอนนี้",
+        step2t: "ออกแบบ", step2d: "โปรแกรมฝึก + โภชนาการเฉพาะตัว ตามอุปกรณ์และอาหารที่กินได้จริง",
+        step3t: "โค้ช 1:1", step3d: "เช็คอินทุกสัปดาห์ แก้ฟอร์ม ปรับน้ำหนัก ตอบตรงจุด",
+        step4t: "วัดผล", step4d: "ชั่ง วัด ถ่ายรูป ปรับแผนต่อเนื่อง ไม่ปล่อยให้เดินผิดทาง",
+        goalsEyebrow: "เป้าหมายของคุณ", goalsTitle: "เลือกเป้าหมายที่ใช่สำหรับคุณ",
+        goalsSub: "ไม่ว่าจะเริ่มต้นหรือฝึกมานาน โปรแกรมจะถูกออกแบบให้ตรงกับเป้าหมายที่คุณเลือก",
+        offerEyebrow: "1:1 Coaching", offerTitle: "สิ่งที่คุณได้เมื่อเข้าโค้ช",
+        offer1t: "โปรแกรมฝึกตามชีวิตจริง", offer1d: "ออกแบบตามอุปกรณ์ที่มี เวลาที่มี และระดับที่คุณยืนอยู่ตอนนี้",
+        offer2t: "โภชนาการที่กินได้จริง", offer2d: "ไม่ใช่เมนูในฝัน — เป็นแผนที่เข้ากับครัวไทยและตารางประจำวัน",
+        offer3t: "ติดตามรายสัปดาห์", offer3d: "เช็คอิน ปรับแผน แก้จุดที่ชะงัก ก่อนนิสัยเก่าจะดึงกลับ",
+        offerNote: "พูดคุยเป้าหมายก่อนเริ่ม ไม่มีแพ็กเกจสำเร็จรูปให้กดซื้อ",
+        applyEyebrow: "พร้อมเริ่มต้นหรือยัง", applyTitleA: "เริ่มเปลี่ยนร่างกายวันนี้", applyTitleAccent: "กับ MUSCULARCC",
+        applySub: "กรอกสั้นๆ แล้วทักต่อทาง Facebook หรือ Instagram — เราจะคุยเป้าหมายก่อนออกแบบแผน",
+        nameLabel: "ชื่อ", namePh: "ชื่อที่ต้องการให้เรียก", contactLabel: "ช่องทางติดต่อ", contactPh: "Instagram, Facebook หรือ Line",
+        goalLabel: "เป้าหมาย", messageLabel: "เล่าสั้นๆ", messagePh: "อายุ ตารางฝึก อาหาร และสิ่งที่อยากเปลี่ยนใน 12 สัปดาห์",
+        submit: "บันทึกแล้วไปทักโค้ช", successTitle: "ใบสมัครถูกบันทึกแล้ว",
+        successBody: "ขั้นตอนถัดไปคือทักหาโค้ชตรงๆ เลือกช่องทางที่คุยสะดวก",
+        msgIg: "ทัก Instagram", msgFb: "ทัก Facebook", another: "กรอกใหม่อีกครั้ง",
+        formError: "กรอกชื่อ ช่องทางติดต่อ และข้อความอย่างน้อย 10 ตัวอักษร",
+        footer: "© MUSCULARCC — Patcharapong Pongpochai. Muscle Building Coach.",
+        photoTag: "PATCHARAPONG PONGPOCHAI",
+      },
+      en: {
+        navAbout: "About", navMethod: "Method", navGoals: "Goals", navApply: "Apply",
+        eyebrow: "Muscle Building Coach · Thailand",
+        heroSub: "Muscle-building and nutrition coaching by Patcharapong Pongpochai — personal programs, measured every step, built for results that last.",
+        ctaApply: "Apply for 1:1 coaching", ctaMethod: "See the method",
+        statFollowers: "Followers", statYears: "Years of work", statCoach: "Private coaching",
+        aboutEyebrow: "The coach",
+        aboutLead: "A muscle-building and nutrition coach who has trained his own body with full intent for more than 10 years — on stage and with hundreds of real clients. The system is lived, not theoretical.",
+        aboutStory: "School was travel. Work was eating. At 37 he chose iron for real. Lasting muscle comes from a correct base: structured training you can measure, nutrition that matches the individual, and discipline that survives a normal week — not a template sold to everyone.",
+        cred1: "More than 10 years of training and coaching", cred2: "Training and nutrition designed per person",
+        cred3: "Hundreds of real coaching cases", cred4: "Ongoing tracking and plan adjustments",
+        methodEyebrow: "The method", methodTitle: "No off-the-shelf package",
+        methodSub: "Every body, schedule, and goal is different. The plan is written from scratch each time.",
+        step1t: "Assess", step1d: "Physique, lifestyle, weekly schedule, and where you are stuck now.",
+        step2t: "Design", step2d: "Training plus nutrition that fit the equipment and food you actually have.",
+        step3t: "Coach 1:1", step3d: "Weekly check-ins. Form, load, and the one thing blocking progress.",
+        step4t: "Measure", step4d: "Weight, tape, photos. The plan moves with the data — not hope.",
+        goalsEyebrow: "Your goal", goalsTitle: "Pick the target that is actually yours",
+        goalsSub: "Beginner or seasoned — the program is built around the goal you choose.",
+        offerEyebrow: "1:1 Coaching", offerTitle: "What you get on the floor",
+        offer1t: "Training that fits real life", offer1d: "Written for the gear you have, the hours you have, and the level you are at.",
+        offer2t: "Nutrition you can eat", offer2d: "Not a fantasy menu — a plan that survives a Thai kitchen and a work week.",
+        offer3t: "Weekly follow-up", offer3d: "Check-in, adjust, fix the stall before old habits pull you back.",
+        offerNote: "We talk through the goal first. There is no one-click package.",
+        applyEyebrow: "Ready to start", applyTitleA: "Change the body", applyTitleAccent: "with MUSCULARCC",
+        applySub: "A short note, then message on Facebook or Instagram. We talk the goal before any plan is written.",
+        nameLabel: "Name", namePh: "What should we call you", contactLabel: "How to reach you", contactPh: "Instagram, Facebook, or Line",
+        goalLabel: "Goal", messageLabel: "A short brief", messagePh: "Age, training week, food, and what you want changed in 12 weeks",
+        submit: "Save and message the coach", successTitle: "Application saved",
+        successBody: "Next step is a direct message. Pick the channel you actually use.",
+        msgIg: "Message on Instagram", msgFb: "Message on Facebook", another: "Write another note",
+        formError: "Name, contact, and at least 10 characters in the brief are required.",
+        footer: "© MUSCULARCC — Patcharapong Pongpochai. Muscle Building Coach.",
+        photoTag: "PATCHARAPONG PONGPOCHAI",
+      },
+    };
+
+    let lang = localStorage.getItem("muscularcc-lang") === "en" ? "en" : "th";
+    let goal = "mass";
+
+    function applyLang() {
+      document.documentElement.lang = lang;
+      const t = COPY[lang];
+      document.querySelectorAll("[data-i]").forEach((el) => {
+        const key = el.getAttribute("data-i");
+        if (t[key]) el.textContent = t[key];
+      });
+      document.getElementById("name").placeholder = t.namePh;
+      document.getElementById("contact").placeholder = t.contactPh;
+      document.getElementById("message").placeholder = t.messagePh;
+      document.getElementById("btn-th").classList.toggle("on", lang === "th");
+      document.getElementById("btn-en").classList.toggle("on", lang === "en");
+      document.getElementById("btn-th").setAttribute("aria-pressed", lang === "th");
+      document.getElementById("btn-en").setAttribute("aria-pressed", lang === "en");
+      renderGoals();
+    }
+
+    function renderGoals() {
+      const cards = document.getElementById("goal-cards");
+      const picks = document.getElementById("goal-picks");
+      cards.innerHTML = "";
+      picks.innerHTML = "";
+      GOALS.forEach((g) => {
+        const label = lang === "th" ? g.th : g.en;
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "goal-card" + (goal === g.id ? " on" : "");
+        card.textContent = label;
+        card.onclick = () => { goal = g.id; renderGoals(); document.getElementById("apply").scrollIntoView({ behavior: "smooth" }); };
+        cards.appendChild(card);
+
+        const lab = document.createElement("label");
+        lab.className = goal === g.id ? "on" : "";
+        lab.innerHTML = `<input type="radio" name="goal" value="${g.id}" ${goal === g.id ? "checked" : ""} /> ${label}`;
+        lab.querySelector("input").onchange = () => { goal = g.id; renderGoals(); };
+        picks.appendChild(lab);
+      });
+    }
+
+    document.getElementById("btn-th").onclick = () => { lang = "th"; localStorage.setItem("muscularcc-lang", lang); applyLang(); };
+    document.getElementById("btn-en").onclick = () => { lang = "en"; localStorage.setItem("muscularcc-lang", lang); applyLang(); };
+
+    const nav = document.getElementById("site-nav");
+    const burger = document.getElementById("burger");
+    burger.onclick = () => {
+      const open = nav.classList.toggle("open");
+      burger.setAttribute("aria-expanded", open);
+      burger.textContent = open ? "✕" : "☰";
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+    document.querySelectorAll("#mobile-menu a").forEach((a) => {
+      a.onclick = () => { nav.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); burger.textContent = "☰"; document.body.style.overflow = ""; };
+    });
+    window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 24), { passive: true });
+
+    const form = document.getElementById("apply-form");
+    const success = document.getElementById("success");
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const contact = document.getElementById("contact").value.trim();
+      const message = document.getElementById("message").value.trim();
+      if (name.length < 2 || contact.length < 3 || message.length < 10) {
+        document.getElementById("form-error").style.display = "block";
+        return;
+      }
+      document.getElementById("form-error").style.display = "none";
+      const record = { name, contact, goal, message, at: new Date().toISOString() };
+      try {
+        const existing = JSON.parse(localStorage.getItem("muscularcc-apply") || "[]");
+        localStorage.setItem("muscularcc-apply", JSON.stringify([record, ...(Array.isArray(existing) ? existing : [])].slice(0, 8)));
+      } catch (_) {}
+      const g = GOALS.find((x) => x.id === goal);
+      document.getElementById("success-meta").textContent = name + " · " + (lang === "th" ? g.th : g.en);
+      form.style.display = "none";
+      success.style.display = "block";
+    };
+    document.getElementById("again").onclick = () => {
+      success.style.display = "none";
+      form.style.display = "block";
+      form.reset();
+      goal = "mass";
+      renderGoals();
+    };
+
+    applyLang();
+  </script>
+</body>
+</html>
