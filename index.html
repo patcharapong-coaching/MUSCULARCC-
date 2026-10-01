@@ -71,12 +71,22 @@
     @media (min-width: 640px) { .nav-inner { padding: 16px 6vw; } }
     .logo { font-family: Anton, sans-serif; font-size: 1.15rem; color: var(--gold-bright); letter-spacing: .04em; flex-shrink: 0; }
     .logo span { color: var(--crimson); }
-    .nav-links { display: none; gap: 32px; }
-    @media (min-width: 1024px) { .nav-links { display: flex; } }
-    .nav-links a {
-      position: relative; padding-bottom: 4px;
-      font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em;
+    .nav-links {
+      display: flex; gap: 14px; align-items: center;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; max-width: 100%;
     }
+    .nav-links::-webkit-scrollbar { display: none; }
+    @media (max-width: 1023px) {
+      .nav-inner { flex-wrap: wrap; align-items: center; }
+      .nav-links { order: 3; flex: 1 0 100%; gap: 16px; padding-top: 2px; }
+    }
+    @media (min-width: 1024px) { .nav-links { display: flex; gap: 28px; } }
+    .nav-links a {
+      position: relative; padding-bottom: 4px; white-space: nowrap; flex: 0 0 auto;
+      font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em;
+    }
+    @media (min-width: 1024px) { .nav-links a { font-size: 14px; letter-spacing: .14em; } }
     .nav-links a::after {
       content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
       background: var(--crimson); transition: width .2s;
@@ -105,11 +115,7 @@
       min-width: 32px; padding: 0 8px; height: 100%;
     }
     .lang button.on { background: var(--gold); color: var(--ink); }
-    .burger {
-      width: 40px; height: 40px; border: 1px solid var(--line); background: transparent;
-      color: var(--fg); cursor: pointer; display: grid; place-items: center;
-    }
-    @media (min-width: 1024px) { .burger { display: none; } }
+    .burger { display: none; }
     .mobile-menu {
       display: none; border-top: 1px solid var(--line); background: var(--bg);
       padding: 32px 6vw;
@@ -119,12 +125,13 @@
       display: block; font-family: Anton, sans-serif; font-size: 2rem;
       letter-spacing: .04em; padding: 8px 0;
     }
-    .hero { position: relative; min-height: 100dvh; overflow: hidden; background: var(--bg); }
+    .hero { position: relative; min-height: 86dvh; overflow: hidden; background: var(--bg); }
+    @media (min-width: 768px) { .hero { min-height: 100dvh; } }
     .hero img.cover {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      object-position: center 22%; filter: contrast(1.05) saturate(.92);
+      object-position: center 12%; filter: contrast(1.05) saturate(.92);
     }
-    @media (min-width: 768px) { .hero img.cover { object-position: 82% 10%; } }
+    @media (min-width: 768px) { .hero img.cover { object-position: 72% 8%; } }
     .hero-wash, .hero-vignette { position: absolute; inset: 0; }
     .hero-wash {
       background: linear-gradient(to top, var(--bg) 0%, rgb(6 5 4 / .92) 36%, rgb(6 5 4 / .28) 64%, rgb(6 5 4 / .06) 100%);
@@ -140,9 +147,9 @@
                   radial-gradient(ellipse at center, transparent 58%, rgb(0 0 0 / .4) 100%);
     }
     .hero-copy {
-      position: relative; z-index: 2; min-height: 100dvh;
+      position: relative; z-index: 2; min-height: 86dvh;
       display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 7rem 6vw 4rem;
+      padding: 6.2rem 5vw 2.2rem;
     }
     @media (min-width: 768px) { .hero-copy { justify-content: center; padding-bottom: 6rem; } }
     .eyebrow {
@@ -173,7 +180,7 @@
     .btn-ghost { background: transparent; color: var(--fg); border-color: transparent; }
     .btn-ghost:hover { color: var(--gold-bright); }
     .stats {
-      display: flex; max-width: 36rem; margin-top: 4rem; padding-top: 1.5rem;
+      display: flex; max-width: 36rem; margin-top: 1.6rem; padding-top: 1rem;
       border-top: 1px solid var(--line);
     }
     .stats > div { flex: 1; padding-right: 1.5rem; }
@@ -186,11 +193,12 @@
       transform: translate(-50%,-50%) rotate(45deg); background: var(--gold-bright);
       box-shadow: 0 0 0 10px var(--bg);
     }
-    section.block { padding: 7rem 6vw; }
+    section.block { padding: 3.2rem 5vw; }
+    @media (min-width: 768px) { section.block { padding: 6rem 6vw; } }
     .wrap { max-width: 72rem; margin: 0 auto; }
     h2 { font-family: Anton, sans-serif; font-size: clamp(2rem, 4.6vw, 3.5rem); font-weight: 400; }
     .surface { background: var(--surface); }
-    .about-grid { display: grid; gap: 3rem; }
+    .about-grid { display: grid; gap: 1.25rem; }
     @media (min-width: 768px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
     figure.portrait {
       position: relative; aspect-ratio: 4/5; overflow: hidden;
@@ -319,6 +327,9 @@
           </a>
           <a href="https://www.instagram.com/patcharapong_cc" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 011.77 1.15 4.9 4.9 0 011.15 1.77c.16.46.35 1.26.4 2.43.06 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.46.16-1.26.35-2.43.4-1.25.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.24-1.97.4-2.43A4.9 4.9 0 013.82 3a4.9 4.9 0 011.77-1.15c.46-.16 1.26-.35 2.43-.4C9.27 1.4 9.4 1.4 12 2.2zm0 1.8c-2.36 0-2.7.02-3.68.06-.9.04-1.5.19-1.9.34a3.1 3.1 0 00-1.13.73 3.1 3.1 0 00-.73 1.13c-.15.4-.3 1-.34 1.9C4.18 9.3 4.16 9.64 4.16 12s.02 2.7.06 3.68c.04.9.19 1.5.34 1.9.15.42.36.78.73 1.13.35.37.71.58 1.13.73.4.15 1 .3 1.9.34.98.04 1.32.06 3.68.06s2.7-.02 3.68-.06c.9-.04 1.5-.19 1.9-.34.42-.15.78-.36 1.13-.73.37-.35.58-.71.73-1.13.15-.4.3-1 .34-1.9.04-.98.06-1.32.06-3.68s-.02-2.7-.06-3.68c-.04-.9-.19-1.5-.34-1.9a3.1 3.1 0 00-.73-1.13 3.1 3.1 0 00-1.13-.73c-.4-.15-1-.3-1.9-.34C14.7 4.02 14.36 4 12 4zm0 3.6a4.4 4.4 0 110 8.8 4.4 4.4 0 010-8.8zm0 1.8a2.6 2.6 0 100 5.2 2.6 2.6 0 000-5.2zm4.6-2a1 1 0 110 2 1 1 0 010-2z"/></svg>
+          </a>
+          <a href="https://x.com/mccoachingdv" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <svg viewBox="0 0 24 24"><path d="M14.7 10.3 22.4 1.5h-1.8l-6.7 7.6L8.4 1.5H1.6l8.1 11.5L1.6 22.5h1.8l7.1-8.1 5.7 8.1h6.8l-8.3-12.2zm-2.5 2.8-.8-1.2L4.1 2.9h2.8l5.3 7.5.8 1.2 6.9 9.9h-2.8l-5.9-8.4z"/></svg>
           </a>
           <a href="https://linkedin.com/in/patcharapong-pongpochai-coaching" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.64h.05c.53-.98 1.83-2.02 3.77-2.02 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.9c0-1.4-.03-3.2-1.98-3.2-1.98 0-2.28 1.5-2.28 3.1V21h-4V9z"/></svg>
