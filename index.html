@@ -282,6 +282,20 @@
     footer p { font-size: 14px; letter-spacing: .04em; color: var(--faint); }
     .head-space { max-width: 36rem; margin-bottom: 3.5rem; }
     .head-space h2 { margin-top: 4px; }
+
+    .edu-facts { display: grid; gap: 12px; margin-bottom: 28px; }
+    @media (min-width: 768px) { .edu-facts { grid-template-columns: repeat(3, 1fr); } }
+    .edu-facts div { border: 1px solid var(--line); background: var(--surface); padding: 18px 20px; }
+    .edu-facts span { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+    .edu-facts b { display: block; margin-top: 6px; font-size: 1.15rem; font-weight: 600; }
+    .edu-facts small { display: block; margin-top: 4px; color: var(--muted); }
+    .edu-grid { display: grid; gap: 16px; }
+    @media (min-width: 768px) { .edu-grid { grid-template-columns: repeat(3, 1fr); } }
+    .edu-grid article { background: var(--surface); border: 1px solid var(--line); padding: 24px; }
+    .edu-grid .gpa { font-family: Anton, sans-serif; font-size: 3rem; color: var(--gold-bright); line-height: 1; }
+    .edu-grid h3 { margin: 12px 0 8px; font-size: 1.25rem; }
+    .edu-grid p { color: var(--muted); line-height: 1.65; }
+    .note a { color: var(--gold-bright); letter-spacing: .08em; }
     .head-space .lead { margin-top: 1rem; }
   </style>
 </head>
@@ -293,6 +307,7 @@
       <a class="logo" href="#top">MUSCULAR<span>CC</span></a>
       <nav class="nav-links">
         <a href="#about" data-i="navAbout">เกี่ยวกับ</a>
+        <a href="#education" data-i="navEdu">การศึกษา</a>
         <a href="#method" data-i="navMethod">วิธีโค้ช</a>
         <a href="#goals" data-i="navGoals">เป้าหมาย</a>
         <a href="#apply" data-i="navApply">สมัครโค้ช</a>
@@ -318,6 +333,7 @@
     </div>
     <div class="mobile-menu" id="mobile-menu">
       <a href="#about" data-i="navAbout">เกี่ยวกับ</a>
+      <a href="#education" data-i="navEdu">การศึกษา</a>
       <a href="#method" data-i="navMethod">วิธีโค้ช</a>
       <a href="#goals" data-i="navGoals">เป้าหมาย</a>
       <a href="#apply" data-i="navApply">สมัครโค้ช</a>
@@ -366,6 +382,42 @@
             <li><b>04</b><span data-i="cred4">ติดตามผลและปรับแผนอย่างต่อเนื่องทุกขั้นตอน</span></li>
           </ul>
         </div>
+      </div>
+    </section>
+
+
+    <div class="gold-line"></div>
+
+    <section class="block" id="education">
+      <div class="wrap">
+        <header class="head-space">
+          <p class="eyebrow"><i></i><span data-i="eduEyebrow">ข้อมูลส่วนตัวและการศึกษา</span></p>
+          <h2 data-i="eduTitle">ประวัติที่เปิดเผยได้</h2>
+          <p class="lead" data-i="eduLead">เผยแพร่จากข้อมูลส่วนตัวและผลการศึกษาในระบบทะเบียน ณ 1 ตุลาคม 2569 เพื่อให้ผู้สนใจและหน่วยงานค้นอ้างอิงได้</p>
+        </header>
+        <div class="edu-facts">
+          <div><span data-i="eduNameL">ชื่อ</span><b>พชรพงศ์ พงษ์โพธิ์ไชย</b><small>Patcharapong Pongpochai</small></div>
+          <div><span data-i="eduBornL">วันเกิด</span><b>4 มิถุนายน 2532</b><small>4 June 1989</small></div>
+          <div><span data-i="eduHomeL">ภูมิลำเนา</span><b data-i="eduHome">อำเภอมัญจาคีรี จังหวัดขอนแก่น</b><small data-i="eduNow">ปัจจุบันอยู่จังหวัดพระนครศรีอยุธยา</small></div>
+        </div>
+        <div class="edu-grid">
+          <article>
+            <p class="gpa">2.92</p>
+            <h3 data-i="eduBuuT">มหาวิทยาลัยบูรพา</h3>
+            <p data-i="eduBuuD">บริหารธุรกิจบัณฑิต กลุ่มการจัดการทรัพยากรมนุษย์ คณะวิทยาการจัดการและการท่องเที่ยว สถานะจบการศึกษา หน่วยกิตที่ได้ 145 จาก 146</p>
+          </article>
+          <article>
+            <p class="gpa">3.44</p>
+            <h3 data-i="eduRuT">มหาวิทยาลัยรามคำแหง</h3>
+            <p data-i="eduRuD">บัณฑิตศึกษา สาขาการพัฒนาทรัพยากรมนุษย์ หน่วยกิตสะสม 36 สอบประมวลความรู้ผล S ภาค 1/2556–1/2558</p>
+          </article>
+          <article>
+            <p class="gpa">—</p>
+            <h3 data-i="eduSchT">โรงเรียนอยุธยานุสรณ์</h3>
+            <p data-i="eduSchD">ระดับมัธยมศึกษา จังหวัดพระนครศรีอยุธยา ยังไม่มีใบแสดงผลการเรียนแนบ จึงไม่ระบุเกรด</p>
+          </article>
+        </div>
+        <p class="note"><a href="education.html" data-i="eduMore">ดูประวัติการศึกษาฉบับเต็ม</a></p>
       </div>
     </section>
 
@@ -480,7 +532,7 @@
     ];
     const COPY = {
       th: {
-        navAbout: "เกี่ยวกับ", navMethod: "วิธีโค้ช", navGoals: "เป้าหมาย", navApply: "สมัครโค้ช",
+        navAbout: "เกี่ยวกับ", navEdu: "การศึกษา", navMethod: "วิธีโค้ช", navGoals: "เป้าหมาย", navApply: "สมัครโค้ช",
         eyebrow: "Muscle Building Coach · Thailand",
         heroSub: "โค้ชสร้างกล้ามเนื้อและวางแผนโภชนาการ โดย Patcharapong Pongpochai — ออกแบบโปรแกรมเฉพาะบุคคล เน้นผลลัพธ์จริง วัดผลได้ทุกขั้นตอน",
         ctaApply: "สมัครโค้ช 1:1", ctaMethod: "ดูวิธีทำงาน",
@@ -490,6 +542,14 @@
         aboutStory: "เคยเป็นสายเที่ยว สายกิน จนอายุ 37 ถึงรู้ตัว — แล้วเลือกทางแบกเหล็กอย่างจริงจัง เชื่อว่าการสร้างกล้ามเนื้อที่ยั่งยืนต้องมาจากพื้นฐานที่ถูกต้อง การฝึกที่เป็นระบบ วัดผลได้ โภชนาการที่แม่นยำตามสรีระแต่ละคน และวินัยที่ทำได้จริงในชีวิตประจำวัน ไม่ใช่สูตรสำเร็จตายตัวที่ใช้ได้กับทุกคน",
         cred1: "ประสบการณ์ฝึกและโค้ชมากกว่า 10 ปี", cred2: "วางแผนโปรแกรมฝึกและโภชนาการเฉพาะบุคคล",
         cred3: "ดูแลผู้ฝึกจริงมาแล้วหลายร้อยเคส", cred4: "ติดตามผลและปรับแผนอย่างต่อเนื่องทุกขั้นตอน",
+        eduEyebrow: "ข้อมูลส่วนตัวและการศึกษา", eduTitle: "ประวัติที่เปิดเผยได้",
+        eduLead: "เผยแพร่จากข้อมูลส่วนตัวและผลการศึกษาในระบบทะเบียน ณ 1 ตุลาคม 2569 เพื่อให้ผู้สนใจและหน่วยงานค้นอ้างอิงได้",
+        eduNameL: "ชื่อ", eduBornL: "วันเกิด", eduHomeL: "ภูมิลำเนา",
+        eduHome: "อำเภอมัญจาคีรี จังหวัดขอนแก่น", eduNow: "ปัจจุบันอยู่จังหวัดพระนครศรีอยุธยา",
+        eduBuuT: "มหาวิทยาลัยบูรพา", eduBuuD: "บริหารธุรกิจบัณฑิต กลุ่มการจัดการทรัพยากรมนุษย์ คณะวิทยาการจัดการและการท่องเที่ยว สถานะจบการศึกษา หน่วยกิตที่ได้ 145 จาก 146",
+        eduRuT: "มหาวิทยาลัยรามคำแหง", eduRuD: "บัณฑิตศึกษา สาขาการพัฒนาทรัพยากรมนุษย์ หน่วยกิตสะสม 36 สอบประมวลความรู้ผล S ภาค 1/2556–1/2558",
+        eduSchT: "โรงเรียนอยุธยานุสรณ์", eduSchD: "ระดับมัธยมศึกษา จังหวัดพระนครศรีอยุธยา ยังไม่มีใบแสดงผลการเรียนแนบ จึงไม่ระบุเกรด",
+        eduMore: "ดูประวัติการศึกษาฉบับเต็ม",
         methodEyebrow: "ระบบการโค้ช", methodTitle: "ไม่ใช่แพ็กเกจสำเร็จรูป",
         methodSub: "ทุกคนเริ่มจากร่างกาย ไลฟ์สไตล์ และเป้าหมายที่ไม่เหมือนกัน แผนจึงต้องถูกออกแบบใหม่ทุกครั้ง",
         step1t: "ประเมิน", step1d: "วัดสรีระ ไลฟ์สไตล์ ตารางชีวิต และจุดที่ติดอยู่ตอนนี้",
@@ -515,7 +575,7 @@
         photoTag: "PATCHARAPONG PONGPOCHAI",
       },
       en: {
-        navAbout: "About", navMethod: "Method", navGoals: "Goals", navApply: "Apply",
+        navAbout: "About", navEdu: "Education", navMethod: "Method", navGoals: "Goals", navApply: "Apply",
         eyebrow: "Muscle Building Coach · Thailand",
         heroSub: "Muscle-building and nutrition coaching by Patcharapong Pongpochai — personal programs, measured every step, built for results that last.",
         ctaApply: "Apply for 1:1 coaching", ctaMethod: "See the method",
@@ -525,6 +585,14 @@
         aboutStory: "School was travel. Work was eating. At 37 he chose iron for real. Lasting muscle comes from a correct base: structured training you can measure, nutrition that matches the individual, and discipline that survives a normal week — not a template sold to everyone.",
         cred1: "More than 10 years of training and coaching", cred2: "Training and nutrition designed per person",
         cred3: "Hundreds of real coaching cases", cred4: "Ongoing tracking and plan adjustments",
+        eduEyebrow: "Personal and education record", eduTitle: "Public profile",
+        eduLead: "Published from personal details and registrar records as of 1 October 2026, for public reference.",
+        eduNameL: "Name", eduBornL: "Born", eduHomeL: "Hometown",
+        eduHome: "Mancha Khiri, Khon Kaen", eduNow: "Based in Phra Nakhon Si Ayutthaya",
+        eduBuuT: "Burapha University", eduBuuD: "B.B.A., Human Resource Management, Faculty of Management and Tourism. Graduated. 145 of 146 credits earned.",
+        eduRuT: "Ramkhamhaeng University", eduRuD: "Graduate study in Human Resource Development. 36 credits. Comprehensive exam: S. Terms 1/2013–1/2015.",
+        eduSchT: "Ayutthaya Nusorn School", eduSchD: "Secondary school in Ayutthaya. No transcript on file, so no GPA is published.",
+        eduMore: "Full education record",
         methodEyebrow: "The method", methodTitle: "No off-the-shelf package",
         methodSub: "Every body, schedule, and goal is different. The plan is written from scratch each time.",
         step1t: "Assess", step1d: "Physique, lifestyle, weekly schedule, and where you are stuck now.",
